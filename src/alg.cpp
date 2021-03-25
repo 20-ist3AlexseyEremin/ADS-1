@@ -1,23 +1,24 @@
 // Copyright 2021 NNTU-CS
 
 int cbinsearch(int *arr, int size, int value) {
-        int i = 0, j = size - 1;
-        int cnt = 0;
+        int i = 0;
+        int j = size - 1;
+        int k = 0;
         while (i < j) {
-                int mid = (i + j) / 2;
-                if (arr[mid] < value)
-                        i = mid+1;
+                int center = (i + j) / 2;
+                if (arr[center] < value) {
+                        i = center + 1;
                 else
-                        j = mid;
+                        j = center;
                 if (arr[i] == value) {
-                        while (arr[i] == value) {
-                                cnt++;
-                                i++;
+                        while (arr[i] == value) {  
+                                k++;
+                                j++;
                         }
                 }
         }
-        if (cnt != 0)
-                return cnt;
+        if (k != 0)
+                return k;
         else
                 return 0; // если ничего не найдено
 }
